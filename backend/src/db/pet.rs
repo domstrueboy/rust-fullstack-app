@@ -1,3 +1,8 @@
+use super::{get_db_con, Result};
+use crate::{error::Error::*, DBPool};
+use common::*;
+use mobc_postgres::tokio_postgres::Row;
+
 pub const TABLE: &str = "pet";
 const SELECT_FIELDS: &str = "id, owner_id, name, animal_type, color";
 

@@ -1,9 +1,9 @@
 [workspace]
 
 members = [
-  "backend",
-  "frontend",
+    "backend",
+    "frontend",
 
-  #Internal
-  "common"
+    #Internal
+    "common"
 ]

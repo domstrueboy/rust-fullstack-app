@@ -1,3 +1,14 @@
+pub mod owner;
+pub mod pet;
+
+use crate::{error, error::Error::*, DBCon, DBPool};
+use mobc::Pool;
+use mobc_postgres::{tokio_postgres, PgConnectionManager};
+use std::fs;
+use std::str::FromStr;
+use std::time::Duration;
+use tokio_postgres::{Config, Error, NoTls};
+
 type Result<T> = std::result::Result<T, error::Error>;
 
 const DB_POOL_MAX_OPEN: u64 = 32;
@@ -19,7 +30,7 @@ pub async fn get_db_con(db_pool: &DBPool) -> Result<DBCon> {
 }
 
 pub fn create_pool() -> std::result::Result<DBPool, mobc::Error<Error>> {
-    let config = Config::from_str("postgres://postgres@127.0.0.1:5432/postgres")?;
+    let config = Config::from_str("postgres://postgres@127.0.0.1:7878/postgres")?;
 
     let manager = PgConnectionManager::new(config, NoTls);
     Ok(Pool::builder()

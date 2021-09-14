@@ -1,3 +1,10 @@
+#![recursion_limit = "256"]
+
+use wasm_bindgen::prelude::*;
+use yew::html;
+use yew::prelude::*;
+use yew_router::{components::RouterAnchor, router::Router, Switch};
+
 mod owner;
 mod pet;
 
@@ -68,8 +75,8 @@ impl Component for FullStackApp {
                                             <owner::list::List />
                                             <br />
                                             <Anchor route=AppRoute::CreateOwner>
-                                                { "Create New Owner" }
-                                            </Anchor>
+                                            { "Create New Owner" }
+                                                </Anchor>
                                         </div>
                                     }
                                 }
